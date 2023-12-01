@@ -9,6 +9,7 @@ jobs:
     steps:
       - checkout # check out the code in the project directory
       - run: echo "hello world" # run the `echo` command 
+      - run: echo <<pipeline.trigger_parameters.circleci.trigger_type>>
       - slack/notify:
          event: always
          template: basic_fail_1
