@@ -11,6 +11,7 @@ jobs:
       - run: echo "hello world" # run the `echo` command 
       - run: echo <<pipeline.trigger_parameters.circleci.trigger_type>>
       - run: echo <<pipeline.trigger_parameters.github_app.web_url>>
+      - run: echo $CIRCLE_PROJECT_REPONAME
       - slack/notify:
          event: always
          template: basic_fail_1
