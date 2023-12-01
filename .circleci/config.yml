@@ -13,6 +13,7 @@ jobs:
       - run: echo <<pipeline.trigger_parameters.github_app.web_url>>
       - run: echo $CIRCLE_PROJECT_REPONAME
       - run: echo $CIRCLE_BRANCH
+      - run: echo $CIRCLE_BUILD_URL
       - slack/notify:
          event: always
          template: basic_fail_1
