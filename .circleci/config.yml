@@ -22,6 +22,9 @@ jobs:
   windows-test: # name of your job
     executor: win/default # executor type
     steps:
+      - add_ssh_keys:
+        fingerprints:
+          - "b7:7d:45:02:91:79:82:48:b0:2a:18:97:85:32:ea:f6"
       - checkout
       - run: Write-Host 'Hello, Windows'
 
