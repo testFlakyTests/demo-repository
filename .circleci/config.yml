@@ -16,6 +16,7 @@ jobs:
       - run: echo $CIRCLE_BRANCH
       - run: echo $CIRCLE_BUILD_URL
       - run: echo <<pipeline.number>>
+      - run: echo <<pipeline.trigger_source>>
       - slack/notify:
          event: always
          template: basic_fail_1
