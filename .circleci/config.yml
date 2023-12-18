@@ -26,7 +26,6 @@ jobs:
       - run: echo <<pipeline.in_setup>>
       - run: echo <<pipeline.schedule.name>>
       - run: echo <<pipeline.schedule.id>>
-      - run: echo <<pipeline.trigger_parameters.gitlab.commit_author_name>>
       - slack/notify:
          event: always
          template: basic_fail_1
