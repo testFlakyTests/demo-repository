@@ -45,6 +45,7 @@ jobs:
     steps:
       - run:
           command: echo 'hello world'
+          command: echo 'hello2 world'
 
 workflows:
   my-workflow:
