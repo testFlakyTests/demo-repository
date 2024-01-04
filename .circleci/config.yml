@@ -38,10 +38,17 @@ jobs:
             - "b7:7d:45:02:91:79:82:48:b0:2a:18:97:85:32:ea:f6"
       - checkout
       - run: Write-Host 'Hello, Windows'
+  hello-job:
+    docker:
+      - image: cimg/node:17.2.0 # the primary container, where your job's commands are run
+    steps:
+      - run:
+        - command: echo 'hello world'
 
 workflows:
   my-workflow:
     jobs:
       - hello-job # comment
       - windows-test
+      - hello2-job
 
