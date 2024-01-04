@@ -28,15 +28,15 @@ jobs:
       - run: echo <<pipeline.schedule.id>>
       - run: echo $CIRCLE_PROJECT_USERNAME
       - run: 
-            name: circle_repository_url
-            command: echo $CIRCLE_REPOSITORY_URL
-       - run: 
-            name: circle_pull_request
-            command: echo $CIRCLE_PULL_REQUEST
+          name: circle_repository_url
+          command: echo $CIRCLE_REPOSITORY_URL
+      - run: 
+          name: circle_pull_request
+          command: echo $CIRCLE_PULL_REQUEST
 
-       - run: 
-            name: circle_sha1
-            command: echo $CIRCLE_SHA1
+      - run: 
+          name: circle_sha1
+          command: echo $CIRCLE_SHA1
       - slack/notify:
          event: always
          template: basic_fail_1
