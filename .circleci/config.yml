@@ -23,6 +23,7 @@ jobs:
       - run: echo <<pipeline.git.branch>>
       - run: echo <<pipeline.git.revision>>
       - run: echo <<pipeline.git.base_revision>>
+      - run: echo <<pipeline.trigger_parameters.webhook.body>>
       - run: echo <<pipeline.in_setup>>
       - run: echo <<pipeline.schedule.name>>
       - run: echo <<pipeline.schedule.id>>
