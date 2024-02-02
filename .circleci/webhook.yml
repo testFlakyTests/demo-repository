@@ -9,8 +9,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "SHA256:6GK43gmtQS/SGE6kz+8v3UYfLf4Bqk2j92unHK3fK50"
-      - run: git clone -b "main" https://github.com/hugotest88/demo-repository.git
-      
+      - run: git clone -b "main" git@github.com:hugotest88/demo-repository.git      
      # - checkout # check out the code in the project directory
       - run: echo "hello world" # run the `echo` command
       - run: 
