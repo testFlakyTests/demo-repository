@@ -8,7 +8,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "SHA256:hm08G2+NOT7xKpfxEwA9dFkwCMG6isb9ItuM+cp65LI"
+            - "SHA256:6GK43gmtQS/SGE6kz+8v3UYfLf4Bqk2j92unHK3fK50"
       - run: git clone -b "main" << pipeline.trigger_parameters.github_app.repo_url >>
 
      # - checkout # check out the code in the project directory
