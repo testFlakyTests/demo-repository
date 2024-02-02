@@ -8,7 +8,7 @@ jobs:
       - checkout # check out the code in the project directory
       - run: echo "hello world" # run the `echo` command
       - run: echo << pipeline.id >>
-      - run: echo << pipeline.trigger_parameters.circleci.webhook.body >>
+      - run: echo << pipeline.trigger_parameters.webhook.body >>
 
 workflows:
   my-workflow:
