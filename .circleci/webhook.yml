@@ -7,9 +7,9 @@ jobs:
     
     steps:
       - add_ssh_keys:
-        fingerprints:
-          - "SHA256:hm08G2+NOT7xKpfxEwA9dFkwCMG6isb9ItuM+cp65LI"
-      - git clone -b "main"
+          fingerprints:
+            - "SHA256:hm08G2+NOT7xKpfxEwA9dFkwCMG6isb9ItuM+cp65LI"
+      - run: git clone -b "main"
 
      # - checkout # check out the code in the project directory
       - run: echo "hello world" # run the `echo` command
