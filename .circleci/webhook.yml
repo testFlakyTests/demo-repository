@@ -4,8 +4,14 @@ jobs:
   hello-job-test:
     docker:
       - image: cimg/node:17.2.0 # the primary container, where your job's commands are run
+    
     steps:
-      - checkout # check out the code in the project directory
+      - add_ssh_keys:
+        fingerprints:
+          - "SHA256:hm08G2+NOT7xKpfxEwA9dFkwCMG6isb9ItuM+cp65LI"
+      - git clone -b "main"
+
+     # - checkout # check out the code in the project directory
       - run: echo "hello world" # run the `echo` command
       - run: 
          environment:
