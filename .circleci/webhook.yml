@@ -7,10 +7,10 @@ jobs:
     steps:
       - checkout # check out the code in the project directory
       - run: echo "hello world" # run the `echo` command
-      - run: echo << pipeline.id >>
+      - run: 
          environment:
           WEBHOOK_BODY: << pipeline.trigger_parameters.webhook.body >>
-      - run: echo $WEBHOOK_BODY
+         command: echo $WEBHOOK_BODY
 
 workflows:
   my-workflow:
