@@ -9,7 +9,7 @@ jobs:
       - run: echo "hello world" # run the `echo` command
       - run: echo << pipeline.id >>
       - run:
-          command: export testJQ=$(<< pipeline.trigger_parameters.webhook.body >> | jq '.foo')
+          command: export testJQ=$(<< pipeline.trigger_parameters.webhook.body >> | jq 'foo')
       - run: echo $testJQ
 
 workflows:
