@@ -8,7 +8,8 @@ jobs:
       - checkout # check out the code in the project directory
       - run: echo "hello world" # run the `echo` command
       - run: echo << pipeline.id >>
-      - run: echo << pipeline.trigger_parameters.webhook.body >>
+      - export testJQ=$(<< pipeline.trigger_parameters.webhook.body >> | jq '.foo')
+      - run: echo $testJQ
 
 workflows:
   my-workflow:
