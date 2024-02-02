@@ -8,7 +8,7 @@ jobs:
       - checkout # check out the code in the project directory
       - run: echo "hello world" # run the `echo` command
       - run: echo << pipeline.id >>
-       environment:
+         environment:
           WEBHOOK_BODY: << pipeline.trigger_parameters.webhook.body >>
       - run: echo $WEBHOOK_BODY
 
