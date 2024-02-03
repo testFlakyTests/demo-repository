@@ -23,7 +23,7 @@ jobs:
           WEBHOOK_BODY: << pipeline.trigger_parameters.webhook.body >>
          command: echo $WEBHOOK_BODY
       - run: ls
-      - run: cat showUp.txt
+      - run: cat demo-repository/showUp.txt
 
 workflows:
   my-workflow:
