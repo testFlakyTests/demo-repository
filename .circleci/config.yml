@@ -5,7 +5,7 @@ orbs:
   
 jobs:
   hello-job:
-    docker:
+    docker: 
       - image: cimg/node:17.2.0 # the primary container, where your job's commands are run
  #      - image: ubuntu:20.04
     steps:
