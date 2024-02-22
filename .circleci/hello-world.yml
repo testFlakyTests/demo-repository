@@ -9,6 +9,6 @@ jobs:
       - run: echo "hello world" # run the `echo` command
 
 workflows:
-  my-workflow:
+  my-workflow: 
     jobs:
       - hello-job   
