@@ -7,7 +7,7 @@ jobs:
   hello-job:
     docker: 
       - image: cimg/node:21.6.0 # the primary container, where your job's commands are run
- #      - image: ubuntu:20.04 
+ #      - image: ubuntu:20.04  
     steps:   
       - checkout # check out the code in the project directory 
       - run: echo "hello world" # run the `echo` command  
