@@ -8,6 +8,6 @@ jobs:
       - run: echo "hello world"
       - run: sudo -h
 workflows:
-  my-workflow: 
+  my-workflow:  
     jobs:
       - build  
