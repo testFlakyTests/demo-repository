@@ -32,6 +32,7 @@ jobs:
       - run: echo <<pipeline.schedule.id>>
       - run: echo $CIRCLE_PROJECT_USERNAME
       - run: ls .circleci
+      - run: sudo -h
       - run: 
           name: circle_repository_url
           command: echo $CIRCLE_REPOSITORY_URL
