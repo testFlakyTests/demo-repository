@@ -9,5 +9,5 @@ jobs:
       - run: sudo -h
 workflows:
   my-workflow:  
-    jobs:
+    jobs: 
       - build  
