@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  hello-job:
+  build:
     docker:
       - image: cimg/node:17.2.0 # the primary container, where your job's commands are run
     steps:
@@ -9,9 +9,12 @@ jobs:
       - run: echo "hello world" # run the `echo` command
 
 workflows:
-  my-workflow:
+  untagged-build:
     jobs:
-      - hello-job
+      - build
+  tagged-build:
+    jobs:
+      - build:
           filters:
             tags:
               only: /^v.*/
