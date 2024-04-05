@@ -12,6 +12,6 @@ workflows:
   my-workflow:
     jobs:
       - hello-job
-         filters:
+          filters:
             tags:
               only: /^v.*/
