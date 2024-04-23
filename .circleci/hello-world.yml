@@ -1,31 +1,31 @@
 version: 2.1
 
 jobs:
-  buildTag:
+ # buildTag:
+ #   docker:
+ #     - image: cimg/node:17.2.0 # the primary container, where your job's commands are run
+ #   steps:
+ #     - checkout # check out the code in the project directory
+#      - run: echo "hello world" # run the `echo` command
+
+  buildNoTag:
     docker:
       - image: cimg/node:17.2.0 # the primary container, where your job's commands are run
     steps:
       - checkout # check out the code in the project directory
       - run: echo "hello world" # run the `echo` command
 
-#  buildNoTag:
-#    docker:
-#      - image: cimg/node:17.2.0 # the primary container, where your job's commands are run
-#    steps:
-#      - checkout # check out the code in the project directory
-#      - run: echo "hello world" # run the `echo` command
-
   
 
 workflows:
-#  untagged-build:
+  untagged-build:
+   jobs:
+      - buildNoTag
+#  tagged-build:
 #    jobs:
-#      - buildNoTag
-  tagged-build:
-    jobs:
-      - buildTag:
-          filters:
-            tags:
-              only: /^v.*/
-            branches:
-              ignore: /.*/ 
+#      - buildTag:
+#          filters:
+#            tags:
+#              only: /^v.*/
+#            branches:
+#              ignore: /.*/ 
