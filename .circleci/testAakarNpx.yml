@@ -11,14 +11,14 @@ jobs:
     environment:
       NODE_OPTIONS: --max-old-space-size=8192
     docker:
-    - image: cimg/base:2024.05
+    - image: cimg/node:22.0.0
 
     steps:
     - checkout
     - set_environment_vars
     - run:
         name: install python
-        command: brew install pyenv
+        command: sudo apt-get update && sudo apt-get install -y python3
     - run:
         name: Environment Information
         command: npx envinfo
