@@ -17,6 +17,9 @@ jobs:
     - checkout
     - set_environment_vars
     - run:
+        name: install python
+        command: brew install pyenv
+    - run:
         name: Environment Information
         command: npx envinfo
     - run:
