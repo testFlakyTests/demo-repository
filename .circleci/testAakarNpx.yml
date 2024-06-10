@@ -5,7 +5,7 @@ orbs:
 jobs:
   coverage-linux:
     docker:
-    - image: cimg/node:22.0.0
+     - image: cimg/node:22.0.0
 
     steps:
       - queue/until_front_of_line:
@@ -16,4 +16,4 @@ jobs:
 workflows:
   Coverage_Linux:
     jobs:
-    - coverage-linux:
+     - coverage-linux:
