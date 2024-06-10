@@ -1,28 +1,19 @@
 version: 2.1
-commands:
-  set_environment_vars:
-    steps:
-    - run:
-        command: |
-          echo "export PYTHON_VERSION=3.12" >> $BASH_ENV
-          echo "export FLAKY_TESTS=keep_retrying" >> $BASH_ENV
+orbs:
+  queue: eddiewebb/queue@3.1.4
+  
 jobs:
   coverage-linux:
-    environment:
-      NODE_OPTIONS: --max-old-space-size=8192
     docker:
     - image: cimg/node:22.0.0
 
     steps:
-    - checkout
-    - run:
-        command: sleep 2 m
+      - queue/until_front_of_line:
+          job-regex: ^DeployStep[0-9]$
+          limit-branch-name: main
+          max-wait-time: '10'
+          my-pipeline: <<pipeline.number>>
 workflows:
   Coverage_Linux:
     jobs:
     - coverage-linux:
-        filters:
-          branches:
-            only:
-            - main
-          tags: {}
