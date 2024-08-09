@@ -6,7 +6,7 @@ orbs:
 jobs:
   hello-job:
     docker:
-      - image: cimg/node:20.4.0-browsers # the primary container, where your job's commands are run
+      - image: cimg/node:14.18.0-browsers # the primary container, where your job's commands are run
     steps:
       - checkout
       - browser-tools/install-browser-tools
