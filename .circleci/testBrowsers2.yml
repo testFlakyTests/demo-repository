@@ -8,11 +8,9 @@ jobs:
     docker:
       - image: cimg/node:20.4.0-browsers # the primary container, where your job's commands are run
     steps:
-      <<: *defaults
-    steps:
       - checkout
       - browser-tools/install-browser-tools
-      - command: google-chrome --version
+      - run: google-chrome --version
 
 workflows:
   my-workflow:
