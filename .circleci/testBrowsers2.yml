@@ -1,0 +1,10 @@
+version: '2.1'
+orbs:
+  browser-tools: circleci/browser-tools@x.y
+jobs:
+  test:
+    docker:
+      - image: cimg/node:20.4.0-browsers
+    steps:
+      - browser-tools/install-browser-tools
+workflows: null
