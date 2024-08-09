@@ -12,7 +12,7 @@ jobs:
     steps:
       - checkout
       - browser-tools/install-browser-tools
-      - google-chrome --version
+      - command: google-chrome --version
 
 workflows:
   my-workflow:
