@@ -2,13 +2,6 @@ version: 2.1
 orbs:
   browser-tools: circleci/browser-tools@1.4.8
 
-defaults: &defaults
-  working_directory: ~/project
-  docker:
-    - image: cimg/node:14.18.0-browsers
-
- steps:
-      - browser-tools/install-browser-tools
 
 jobs:
   hello-job:
@@ -18,6 +11,8 @@ jobs:
       <<: *defaults
     steps:
       - checkout
+      - browser-tools/install-browser-tools
+      - google-chrome --version
 
 workflows:
   my-workflow:
