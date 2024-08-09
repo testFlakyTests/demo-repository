@@ -1,0 +1,42 @@
+version: 2
+
+orbs:
+  browser-tools: circleci/browser-tools@1.4.8
+
+defaults: &defaults
+  working_directory: ~/project
+  docker:
+    - image: cimg/node:14.18.0-browsers
+
+ steps:
+      - browser-tools/install-browser-tools
+
+jobs:
+  test-node:
+    <<: *defaults
+    steps:
+      - checkout
+      - run: 'yarn install'
+      - run: 'yarn lint:ci'
+      - run: 'yarn build:ci'
+      - run: 'yarn test:node --maxWorkers=4'
+      - run:
+          name: Parser Preview
+          command: ./scripts/pr-parser-preview.sh
+          when: always
+
+      - store_artifacts:
+          path: tmp/artifacts
+      - persist_to_workspace:
+          root: ~/project
+          paths: .
+
+  test-web:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - checkout
+      - run: 'yarn install'
+      - run: 'yarn test:web --maxWorkers=4'
+      - run: 'yarn build:web:ci --maxWorkers=4'
