@@ -10,6 +10,6 @@ jobs:
       - run: echo << pipeline.trigger_parameters.webhook.body >>
 
 workflows:
-  my-workflow:
+  webhook-test:
     jobs:
       - hello-job
