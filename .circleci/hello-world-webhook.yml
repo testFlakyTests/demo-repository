@@ -11,5 +11,5 @@ jobs:
 
 workflows:
   webhook-test: 
-    jobs:
+    jobs: 
       - hello-job
