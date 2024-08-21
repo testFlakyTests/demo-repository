@@ -64,7 +64,7 @@ jobs:
           command: echo 'hello world'
 
 workflows:
-  my-workflow:
+  my-workflow2:
     jobs:
       - hello-job # comment
       - windows-test
