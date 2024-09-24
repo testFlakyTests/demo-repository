@@ -66,8 +66,6 @@ jobs:
 workflows:
   my-workflow2:
     jobs:
-      - hello-job # comment 
-      - windows-test
       - hello2-job
       - hold: 
           type: approval
