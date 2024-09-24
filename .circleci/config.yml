@@ -68,6 +68,6 @@ workflows:
     jobs:
       - hold: 
           type: approval
-     - hello2-job:
+      - hello2-job:
           requires:
             - hold
