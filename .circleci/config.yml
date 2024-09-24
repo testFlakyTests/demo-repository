@@ -18,7 +18,7 @@ jobs:
       - run: echo $CIRCLE_BUILD_URL
       - run: echo <<pipeline.number>>
       - run: echo <<pipeline.trigger_source>>
-      - run: echo <<pipeline.id>>
+      - run: echo <<pipeline.id>>  
       - run: echo <<pipeline.project.git_url>>
       - run: echo <<pipeline.git.tag>>
       - run: echo <<pipeline.git.branch>>
