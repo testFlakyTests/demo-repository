@@ -69,6 +69,6 @@ workflows:
       - hello-job # comment 
       - windows-test
       - hello2-job
-      - hold:
+      - hold: 
           type: approval
 
