@@ -21,6 +21,7 @@ jobs:
       - run: echo << pipeline.trigger_parameters.github_app.repo_url >>  
       - run: echo $CIRCLE_PR_REPONAME 
       - run: echo $CIRCLE_PR_NUMBER
+      - run: echo << pipeline.git.commit.author_email >>
 
   
 
