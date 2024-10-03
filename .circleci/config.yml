@@ -9,6 +9,6 @@ jobs:
       - run: echo "i'm config.yml" # run the `echo` command
 
 workflows:
-  my-workflow:
+  configYML:
     jobs:
       - configyml
