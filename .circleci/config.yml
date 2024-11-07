@@ -16,5 +16,5 @@ jobs:
 
 workflows:
   configYML:
-    jobs:
+    jobs: 
       - configyml
