@@ -1,5 +1,10 @@
 version: 2.1
 
+parameters:
+  test:
+    type: string
+    default: "I'm a test"
+
 jobs:
   configyml:
     docker:
@@ -7,6 +12,7 @@ jobs:
     steps:
       - checkout # check out the code in the project directory
       - run: echo "i'm config.yml" # run the `echo` command
+      - run: echo << pipeline.parameters.test >> # print the value of the test parameter
 
 workflows:
   configYML:
