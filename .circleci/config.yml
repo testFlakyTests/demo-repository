@@ -3,7 +3,7 @@ version: 2.1
 parameters:
   test:
     type: string
-    default: "I'm a test"
+    default: "Im a test"
 
 jobs:
   configyml:
