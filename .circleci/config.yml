@@ -4,6 +4,10 @@ parameters:
   test:
     type: string
     default: "Im a test"
+  do_release:
+    type: enum
+    enum: ['no', 'yes']
+    default: 'no'
 
 jobs:
   configyml:
@@ -13,6 +17,7 @@ jobs:
       - checkout # check out the code in the project directory
       - run: echo "i'm config.yml" # run the `echo` command
       - run: echo << pipeline.parameters.test >> # print the value of the test parameter
+      - run: echo << pipeline.parameters.do_release >>
 
 workflows:
   configYML:
