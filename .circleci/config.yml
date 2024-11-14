@@ -8,6 +8,9 @@ parameters:
     type: enum
     enum: ['no', 'yes']
     default: 'no'
+  something_s3_something:
+    type: string
+    default: 's3yeah'
 
 jobs:
   configyml:
