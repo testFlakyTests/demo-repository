@@ -21,6 +21,7 @@ jobs:
       - run: echo "i'm config.yml" # run the `echo` command
       - run: echo << pipeline.parameters.test >> # print the value of the test parameter
       - run: echo << pipeline.parameters.do_release >>
+      - run: echo << pipeline.parameters.something_s3_something >>
 
 workflows:
   configYML:
