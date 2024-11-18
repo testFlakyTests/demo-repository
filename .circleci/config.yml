@@ -11,9 +11,9 @@ parameters:
   something_s3_something:
     type: string
     default: 's3yeah'
-#  testing-hyphen:
-#    type: string
-#    default: "hyphen-ated"
+  testing-hyphen:
+    type: string
+    default: "hyphen-ated"
 
 jobs: 
   configyml:
@@ -25,7 +25,7 @@ jobs:
       - run: echo << pipeline.parameters.test >> # print the value of the test parameter
       - run: echo << pipeline.parameters.do_release >>
       - run: echo << pipeline.parameters.something_s3_something >>
-#      - run: echo << pipeline.parameters.testing-hyphen >>
+      - run: echo << pipeline.parameters.testing-hyphen >>
       - run: sleep 1m
 
 
