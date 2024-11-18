@@ -26,6 +26,7 @@ jobs:
       - run: echo << pipeline.parameters.do_release >>
       - run: echo << pipeline.parameters.something_s3_something >>
       - run: echo << pipeline.parameters.testing-hyphen >>
+      - run: sleep 1m
 
 
 workflows:
