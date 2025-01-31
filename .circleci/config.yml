@@ -6,9 +6,9 @@ parameters:
     default: "Im a test"
   do_release:
     type: enum
-    enum: ['no', 'yes']
+    enum: ['no', 'yes '] 
     default: 'no'
-  something_s3_something:
+  something_s3_something: 
     type: string
     default: 's3yeah'
   testing-hyphen:
