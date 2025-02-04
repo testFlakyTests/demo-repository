@@ -1,39 +1,20 @@
-version: 2.1
-
+version: '2.1'
+orbs:
+  node: circleci/node@4.1.0
 jobs:
- # buildTag:
- #   docker:
- #     - image: cimg/node:17.2.0 # the primary container, where your job's commands are run 
- #   steps:
- #     - checkout # check out the code in the project directory
-#      - run: echo "hello world" # run the `echo` command
-
-  helloWorld:
+  build:
     docker:
-      - image: cimg/node:17.2.0 # the primary container, where your job's commands are run
+      - image: circleci/node:14
     steps:
-      - checkout # check out the code in the project directory  
-      - run: echo "hello world" # run the `echo` command 
-      - run: echo $CIRCLE_PULL_REQUEST
-      - run: echo $CIRCLE_REPOSITORY_URL
-      - run: echo "This is pipeline ID << pipeline.id >>"
-      - run: echo "This is base revision << pipeline.git.base_revision >>" 
-      - run: echo << pipeline.trigger_parameters.github_app.repo_url >>  
-      - run: echo $CIRCLE_PR_REPONAME 
-      - run: echo $CIRCLE_PR_NUMBER
-      - run: echo << pipeline.git.commit.author_email >>
-
-  
-
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: yarn install
+      - run:
+          name: Build App
+          command: yarn build
 workflows:
-  helloworldYML:
-   jobs:
-      - helloWorld
-#  tagged-build:
-#    jobs: 
-#      - buildTag:
-#          filters:
-#            tags:
-#              only: /^v.*/
-#            branches:
-#              ignore: /.*/ 
+  version: 2
+  build:
+    jobs:
+      - build
