@@ -1,20 +1,19 @@
-version: '2.1'
-orbs:
-  node: circleci/node@4.1.0
+version: 2.1
+
 jobs:
-  build:
+  hello-job:
     docker:
-      - image: circleci/node:14
+      - image: cimg/base:stable
     steps:
       - checkout
       - run:
-          name: Install Dependencies
-          command: yarn install
+          name: "Say Hello"
+          command: "echo Hello, World!"
       - run:
-          name: Build App
-          command: yarn build
+          name: "Curl ESPN"
+          command: "curl https://www.espn.com"
+
 workflows:
-  version: 2
-  build:
+  hello-workflow:
     jobs:
-      - build
+      - hello-job
