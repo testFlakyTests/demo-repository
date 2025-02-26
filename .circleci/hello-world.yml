@@ -16,4 +16,4 @@ jobs:
 workflows:
   hello-workflow:
     jobs:
-      - hello-job
+    - hello-job 
