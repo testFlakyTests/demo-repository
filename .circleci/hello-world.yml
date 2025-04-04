@@ -12,6 +12,9 @@ jobs:
       - run:
           name: "Curl ESPN"
           command: "curl https://www.espn.com"
+      - run:
+          name: intentionally fail
+          command: exit 1
 
 workflows:
   hello-workflow:
