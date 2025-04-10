@@ -1,7 +1,8 @@
 version: 2.1
 
 jobs:
-  hello-job:
+  test:
+    parallelism: 4
     docker:
       - image: cimg/node:20.11
     steps:
@@ -13,26 +14,18 @@ jobs:
           name: Install Dependencies
           command: npm install
       - run:
-          name: Run Vitest Tests
-          command: npm test
+          name: Run split tests
+          command: |
+            TESTS=$(circleci tests glob "src/**/*.test.ts")
+            echo "$TESTS" | circleci tests run --command="xargs npx vitest run --reporter=default --reporter=junit" --split-by=timings --verbose
           when: always
       - store_test_results:
           path: test-results
       - store_artifacts:
           path: test-results
           destination: test-results
-      - run:
-          name: "Say Hello"
-          command: "echo Hello, World!"
-      - run:
-          name: "Curl ESPN"
-          command: "curl https://www.espn.com"
-      - run:
-          name: intentionally pass
-          command: exit 0
-
 workflows:
-  hello-workflow:
+  test-workflow:
     jobs:
-      - hello-job
+      - test
   
