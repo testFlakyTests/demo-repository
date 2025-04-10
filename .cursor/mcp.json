@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "circleci-mcp-server": {
+      "command": "npx",
+      "args": ["-y", "@circleci/mcp-server-circleci"],
+      "env": {
+        "CIRCLECI_TOKEN": "CCIPAT_WL7jndmrg6388Q8mTFR7WJ_abe544280f0b9528e384ddeac1e61e6af23207f9"
+      }
+    }
+  }
+}
