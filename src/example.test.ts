@@ -16,4 +16,8 @@ describe('Basic Test Suite', () => {
     expect(numbers).toHaveLength(3)
     expect(numbers).toContain(2)
   })
+
+  it('should intentionally fail', () => {
+    expect(true).toBe(false) // This will always fail
+  })
 }) 
