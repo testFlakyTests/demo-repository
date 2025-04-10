@@ -13,7 +13,6 @@ jobs:
           name: "Curl ESPN"
           command: "curl https://www.espn.com"
 
-workflows:
-hello-workflow:
+workflows:hello-workflow:
     jobs:
   - hello-job 
