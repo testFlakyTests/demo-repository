@@ -17,6 +17,6 @@ jobs:
           command: exit 1
 
 workflows:
-  hello-workflow:
+hello-workflow:
     jobs:
       - hello-job   
