@@ -3,9 +3,15 @@ version: 2.1
 jobs:
   hello-job:
     docker:
-      - image: cimg/base:stable
+      - image: cimg/node:20.11
     steps:
       - checkout
+      - run:
+          name: Install Dependencies
+          command: npm install
+      - run:
+          name: Run Vitest Tests
+          command: npm test
       - run:
           name: "Say Hello"
           command: "echo Hello, World!"
@@ -13,8 +19,8 @@ jobs:
           name: "Curl ESPN"
           command: "curl https://www.espn.com"
       - run:
-          name: intentionally fail
-          command: exit 1
+          name: intentionally pass
+          command: exit 0
 
 workflows:
   hello-workflow:
