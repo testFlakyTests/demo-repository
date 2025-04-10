@@ -14,6 +14,6 @@ jobs:
           command: "curl https://www.espn.com"
 
 workflows:
-  hello-workflow:
+hello-workflow:
     jobs:
   - hello-job 
