@@ -30,6 +30,6 @@ jobs:
 
 
 workflows:
-  configYML:
+  configYML: 
     jobs: 
       - configyml

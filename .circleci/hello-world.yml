@@ -1,31 +1,36 @@
 version: 2.1
 
 jobs:
+  say-hello:
+    docker:
+      - image: cimg/base:2024.01
+    steps:
+      - checkout
+      - run:
+          name: Say Hello
+          command: echo "Hello, World!"
+
   test:
-    parallelism: 4
     docker:
       - image: cimg/node:20.11
     steps:
       - checkout
       - run:
-          name: Create test results directory
-          command: mkdir -p test-results
-      - run:
           name: Install Dependencies
           command: npm install
       - run:
-          name: Run split tests
-          command: |
-            TESTS=$(circleci tests glob "src/**/*.test.ts")
-            echo "$TESTS" | circleci tests run --command="xargs npx vitest run --reporter=default --reporter=junit" --split-by=timings --verbose
-          when: always
+          name: Run Tests
+          command: npm test
       - store_test_results:
           path: test-results
       - store_artifacts:
           path: test-results
           destination: test-results
+
 workflows:
-  test-workflow: 
+  hello-workflow:
     jobs:
-      - test
-  -
+      - say-hello
+      - test:
+          requires:
+            - say-hello
