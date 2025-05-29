@@ -36,12 +36,12 @@ jobs:
           command: echo "I'm a deploy job"
       - run: circleci run release plan --target-version="v1.1" --environment-name="test1"
       - run: circleci run release update --status=running
-      - run:
-          name: Update planned release to SUCCESS
-          command: |
-            circleci run release update \
-              --status=SUCCESS
-          when: on_success
+ #     - run:
+ #         name: Update planned release to SUCCESS
+ #         command: |
+ #            circleci run release update \
+ #             --status=SUCCESS
+#          when: on_success
       - run:
           name: Update planned release to FAILED
           command: |
