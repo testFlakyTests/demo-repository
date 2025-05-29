@@ -27,6 +27,32 @@ jobs:
           path: test-results
           destination: test-results 
 
+  deploy:
+    docker:
+      - image: cimg/base:2024.01
+    steps:
+      - run:
+          name: Deploy
+          command: echo "I'm a deploy job"
+      - run: circleci run release plan --target-version="v1.1" --environment-name="test1"
+      - run: circleci run release update --status=running
+      - run:
+          name: Update planned release to SUCCESS
+          command: |
+            circleci run release update \
+              --status=SUCCESS
+          when: on_success
+      - run:
+          name: Update planned release to FAILED
+          command: |
+            if [ -f failure_reason.env ]; then
+              source failure_reason.env
+            fi
+            circleci run release update \
+              --status=FAILED \
+              --failure-reason="$FAILURE_REASON"
+          when: on_fail
+
 workflows:
   hello-workflow:
     jobs:
@@ -34,3 +60,6 @@ workflows:
       - test:
           requires:
             - say-hello
+      - deploy:
+          requires:
+            - test
