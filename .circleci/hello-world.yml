@@ -25,50 +25,8 @@ jobs:
           path: test-results
       - store_artifacts:
           path: test-results
-          destination: test-results 
-
-  deploy:
-    docker:
-      - image: cimg/base:2024.01
-    steps:
-      - run:
-          name: Deploy
-          command: echo "I'm a deploy job"
-      - run: circleci run release plan --target-version="v1.1" --environment-name="test1"
-      - run: circleci run release update --status=running
- #     - run:
- #         name: Update planned release to SUCCESS
- #         command: |
- #            circleci run release update \
- #             --status=SUCCESS
-#          when: on_success
-      - run:
-          name: Update planned release to FAILED
-          command: | 
-            if [ -f failure_reason.env ]; then
-              source failure_reason.env
-            fi
-            circleci run release update \
-              --status=FAILED \
-              --failure-reason="$FAILURE_REASON"
-          when: on_fail
-
-  test-deploy-image: 
-    docker:
-      - image: cimg/python:3.12.1
-    steps:
-      - run:
-          name: Print Test Deploy
-          command: echo "test deploy"
 
 workflows:
-  hello-workflow:
-    jobs:
-      - say-hello
+  test-workflow:
       - test:
-          requires:
-            - say-hello
-      - deploy:
-          requires:
-            - test
 
