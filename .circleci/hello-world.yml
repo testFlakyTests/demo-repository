@@ -28,5 +28,5 @@ jobs:
 
 workflows:
   test-workflow:
-      - test:
+      - test
 
