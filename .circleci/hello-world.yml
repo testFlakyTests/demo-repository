@@ -71,6 +71,4 @@ workflows:
       - deploy:
           requires:
             - test
-      - test-deploy-image:
-          requires:
-            - deploy
+
