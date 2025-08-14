@@ -60,4 +60,24 @@ describe('Flaky Test Suite', () => {
   it('flaky test 15', () => {
     expect(new Date().getMilliseconds() % 3 === 0).toBe(true)
   })
-})
+
+  it('flaky test 16', () => {
+    expect(Math.random() * Date.now() % 5 < 2).toBe(true)
+  })
+
+  it('flaky test 17', () => {
+    expect((new Date().getSeconds() % 4) === 1).toBe(true)
+  })
+
+  it('flaky test 18', () => {
+    expect(Math.abs(Math.sin(Date.now())) > 0.5).toBe(true)
+  })
+
+  it('flaky test 19', () => {
+    expect((new Date().getMilliseconds() + Math.random() * 100) % 7 < 3).toBe(true)
+  })
+
+  it('flaky test 20', () => {
+    expect((Date.now() % 10) > 5).toBe(true)
+  })
+}) 
