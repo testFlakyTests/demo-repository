@@ -1,35 +1,53 @@
 version: 2.1
 
-parameters:
+jobs:
   test:
-    type: string
-    default: "Im a test"
-  do_release:
-    type: enum
-    enum: ['no', 'yes '] 
-    default: 'no'
-  something_s3_something: 
-    type: string
-    default: 's3yeah'
-  testing-hyphen:
-    type: string
-    default: "hyphen-ated"
-
-jobs: 
-  configyml:
     docker:
-      - image: cimg/node:17.2.0 # the primary container, where your job's commands are run
+      - image: cimg/node:20.11
     steps:
-      - checkout # check out the code in the project directory
-      - run: echo "i'm config.yml " # run the `echo` command
-      - run: echo << pipeline.parameters.test >> # print the value of the test parameter
-      - run: echo << pipeline.parameters.do_release >>
-      - run: echo << pipeline.parameters.something_s3_something >>
-      - run: echo << pipeline.parameters.testing-hyphen >>
-      - run: sleep 1m
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: npm install
+      - run:
+          name: Run Tests
+          command: npm test
+      - store_test_results:  
+          path: test-results 
+      - store_artifacts:
+          path: test-results
+          destination: test-results 
 
+  deploy:
+    docker:
+      - image: cimg/base:2024.01
+    steps:
+      - run:
+          name: Deploy
+          command: echo "I'm a deploy job"
+      - run: circleci run release plan --target-version="v1.1" --environment-name="test1"
+      - run: circleci run release update --status=running
+ #     - run:
+ #         name: Update planned release to SUCCESS
+ #         command: |
+ #            circleci run release update \
+ #             --status=SUCCESS
+#          when: on_success
+      - run:
+          name: Update planned release to FAILED
+          command: | 
+            if [ -f failure_reason.env ]; then
+              source failure_reason.env
+            fi
+            circleci run release update \
+              --status=FAILED \
+              --failure-reason="$FAILURE_REASON"
+          when: on_fail
 
 workflows:
-  configYML: 
-    jobs: 
-      - configyml
+  hello-workflow:
+    jobs:
+      - test
+      - deploy:
+          requires:
+            - test
